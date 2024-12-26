@@ -17,13 +17,14 @@
 	}
 
 	&__link-text {
-		margin-right: auto;
-		margin-left: 20px;
-		color: inherit;
 		display: none;
 
 		@media (min-width: $mobile-size) {
+			margin-right: auto;
+			margin-left: 20px;
+			color: inherit;
 			display: block;
+			font-size: 20px;
 		}
 	}
 }
