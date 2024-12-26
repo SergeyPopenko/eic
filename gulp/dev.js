@@ -15,7 +15,7 @@ const changed = require('gulp-changed');
 const svgmin = require('gulp-svgmin');
 const cheerio = require("gulp-cheerio");
 const rename = require("gulp-rename");
-const svgSprite = require('gulp-svg-sprite')
+const svgSprite = require('gulp-svg-sprite');
 const replace = require('gulp-replace');
 const webp = require("gulp-webp");
 

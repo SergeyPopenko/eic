@@ -6,24 +6,24 @@ body {
     --line-height-body: 1.1;
     --font-main: "Ubuntu", Arial, sans-serif;
 
-    @media (min-width: $tablet-size) {
+        @media (min-width: $tablet-size) {
         --font-size-body: 18px;
         --font-size-small: 18px;
         --font-size-title: 20px;
         --font-size-button: 18px;
-	}
+        }
 
-	@media (min-width: $desktop-size) {
+        @media (min-width: $desktop-size) {
         --font-size-body: 24px;
         --font-size-small: 20px;
         --font-size-title: 30px;
         --font-size-button: 24px;
-	}
+        }
 
-	@media (min-width: $large-desktop-size) {
+        @media (min-width: $large-desktop-size) {
         --font-size-body: 30px;
         --font-size-small: 24px;
         --font-size-title: 36px;
         --font-size-button: 30px;
-	}
+        }
 }

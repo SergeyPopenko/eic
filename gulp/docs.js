@@ -23,12 +23,12 @@ const webpack = require('webpack-stream');
 const babel = require('gulp-babel');
 const changed = require('gulp-changed');
 const svgmin = require('gulp-svgmin');
+const cheerio = require("gulp-cheerio");
 const rename = require("gulp-rename");
-
-// Images
+const svgSprite = require('gulp-svg-sprite');
+const replace = require('gulp-replace');
+const webp = require("gulp-webp");
 const imagemin = require('gulp-imagemin');
-const webp = require('gulp-webp');
-
 
 gulp.task('clean:docs', function (done) {
 	if (fs.existsSync('./docs/')) {
@@ -60,7 +60,6 @@ gulp.task('html:docs', function () {
 		.pipe(changed('./docs/'))
 		.pipe(plumber(plumberNotify('HTML')))
 		.pipe(fileInclude(fileIncludeSetting))
-		.pipe(webpHTML())
 		.pipe(htmlclean())
 		.pipe(gulp.dest('./docs/'));
 });
@@ -73,7 +72,6 @@ gulp.task('sass:docs', function () {
 		.pipe(sourceMaps.init())
 		.pipe(autoprefixer())
 		.pipe(sassGlob())
-		.pipe(webpCss())
 		.pipe(groupMedia())
 		.pipe(sass())
 		.pipe(csso())
@@ -84,10 +82,6 @@ gulp.task('sass:docs', function () {
 gulp.task('images:docs', function () {
 	return gulp
 		.src('./src/img/**/*')
-		.pipe(changed('./docs/img/'))
-		.pipe(webp())
-		.pipe(gulp.dest('./docs/img/'))
-		.pipe(gulp.src('./src/img/**/*'))
 		.pipe(changed('./docs/img/'))
 		.pipe(imagemin({ verbose: true }))
 		.pipe(gulp.dest('./docs/img/'));
@@ -117,27 +111,16 @@ gulp.task('js:docs', function () {
 		.pipe(gulp.dest('./docs/js/'));
 });
 
-// gulp.task('symbols:docs', function() {
-// 	return gulp
-// 		.src('./src/icons/*.svg')
-// 		.pipe(svgmin())
-// 		.pipe(svgstore({
-// 			inlineSvg: true
-// 		}))
-// 		.pipe(cheerio({
-// 			run: function($) {
-// 			$("svg").attr("style", "display:none");
-// 			},
-// 			parserOptions: { xmlMode: true }
-// 		}))
-// 		.pipe(rename("symbols.svg"))
-// 		.pipe(gulp.dest('./src/img/'));
-// });
-
 gulp.task('copyManifest:docs', function () {
 	return gulp
 		.src('./src/manifest.json')
 		.pipe(gulp.dest("./build/js/"))
+});
+
+gulp.task('copyManifest:docs', function () {
+	return gulp
+		.src('./src/manifest.json')
+		.pipe(gulp.dest("./docs/"))
 });
 
 gulp.task('symbols:docs', function () {
@@ -148,6 +131,17 @@ gulp.task('symbols:docs', function () {
 				pretty: true
 			}
 		}))
+		// remove all fill, style and stroke declarations in out shapes
+		.pipe(cheerio({
+			run: function ($) {
+				// $('[fill]').removeAttr('fill');
+				// $('[stroke]').removeAttr('stroke');
+				// $('[style]').removeAttr('style');
+			},
+			parserOptions: {xmlMode: true}
+		}))
+		// cheerio plugin create unnecessary string '&gt;', so replace it.
+		.pipe(replace('&gt;', '>'))
 		// build svg sprite
 		.pipe(svgSprite({
 			mode: {
@@ -155,6 +149,12 @@ gulp.task('symbols:docs', function () {
 					sprite: "../sprite.svg"
 				}
 			}
+		}))
+		.pipe(cheerio({
+			run: function ($) {
+				$("svg").attr("style", "display:none");
+			},
+			parserOptions: {xmlMode: true}
 		}))
 		.pipe(rename("symbols.svg"))
 		.pipe(gulp.dest('./src/img/'));
