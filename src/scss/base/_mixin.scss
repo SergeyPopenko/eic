@@ -1,0 +1,19 @@
+@mixin fontTitle ($font-color: var(--text-color-secondary)) {
+    color: $font-color;
+    font-weight: 700;
+    font-size: var(--font-size-title);
+    text-align: center;
+}
+
+@mixin fontButton () {
+    font-weight: 500;
+    font-size: var(--font-size-button);
+}
+
+@mixin fontSmall () {
+    font-size: var(--font-size-small);
+}
+
+body {
+    background: #000;
+}

@@ -1,0 +1,241 @@
+.promo {
+    position: relative;
+    // margin-top: 70px;
+
+    &__background {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__image-left {
+        height: 100%;
+        width: 100%;
+        
+        @media (min-width: $desktop-size) {
+            width: auto;
+            margin-inline: auto;
+        }
+    }
+
+    &__image-right {
+        display: none;
+
+        @media (min-width: $desktop-size) {
+            display: block;
+        }
+    }
+
+    &__wrap {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+        padding: 40px 0;
+        
+        // @media (min-width: $tablet-size) {
+            // }
+            
+            // @media (min-width: $tablet-size) {
+                // }
+                
+        @media (min-width: $tablet-size) {
+            flex-direction: row;
+            justify-content: center;
+            padding: 60px 0;
+            gap: 30px;
+        }
+        
+        @media (min-width: $desktop-size) {
+            padding: 100px 0;
+            justify-content: flex-start;
+        }
+    }
+
+    &__anchor {
+        @include fontButton ();
+
+        width: 135px;
+        height: 135px;
+        border-radius: 50%;
+        background: linear-gradient(to bottom, #0C49D5 0%, #1140AA 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: inherit;
+        position: relative;
+        box-shadow: -10px 15px 4px 0px #0000001A;
+
+        @media (min-width: $desktop-size) {
+            width: 238px;
+            height: 238px;
+        }
+    }
+
+    &__anchor-text {
+        padding-bottom: 20px;
+
+        @media (min-width: $desktop-size) {
+            padding-bottom: 30px;
+        }
+    }
+
+    &__anchor-image {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        @media (min-width: $desktop-size) {
+            width: 72px;
+            height: 72px;
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+
+        
+        // @media (min-width: $tablet-size) {
+        // }
+
+        // @media (min-width: $tablet-size) {
+        // }
+        
+        @media (min-width: $tablet-size) {
+            align-items: flex-end;
+            margin-right: -40px;
+
+            &--right {
+                margin-right: 0;
+                margin-left: -40px;
+                align-items: flex-start;
+            }
+        }
+
+        @media (min-width: $desktop-size) {
+            margin-right: -80px;
+
+            &--right {
+                margin-left: -80px;
+            }
+        }
+        
+        // @media (min-width: $large-desktop-size) {
+        // }
+    }
+
+    &__item {
+        @include fontTitle ($font-color: var(--brand-light-blue));
+
+        border: 1px solid #BBBBBB;
+        border-radius: 40px;
+        background: radial-gradient(circle, #FEFEFE 0%, #D0D5DD 100%);
+        font-size: 16px;
+        text-shadow: 1px 0 #BBBBBB;
+        padding: 15px 0;
+        position: relative;
+        width: 230px;
+
+        & + & {
+            margin-top: 30px;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            right: -13px;
+            top: -18px;
+            background-image: url('../img/btnrightmobile.png');
+            background-position-x: 100%;
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: 100%;
+            height: 80px;
+            z-index: -1;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: -26px;
+            top: -11px;
+            background-image: url('../img/btnleftmobile.png');
+            background-position-x: 0;
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: 100%;
+            height: 83px;
+            z-index: -1;
+        }
+        
+        // @media (min-width: $tablet-size) {
+        // }
+
+        @media (min-width: $tablet-size) {
+            &:nth-child(even) {
+                margin-right: 40px;
+
+                .promo__list--right & {
+                    margin-right: 0;
+                    margin-left: 40px;
+                }
+            }
+
+            & + & {
+                margin-top: 50px;
+            }
+        }
+
+        @media (min-width: $desktop-size) {
+            width: 430px;
+            padding: 29px 28px;
+            border-radius: 49px;
+            font-size: 32px;
+
+            & + & {
+                margin-top: 80px;
+            }
+
+            &:nth-child(even) {
+                margin-right: 80px;
+
+                .promo__list--right & {
+                    margin-left: 80px;
+                }
+            }
+
+            &::after {
+                right: -23px;
+                top: -31px;
+                background-image: url('../img/btnright.png');
+                height: 150px;
+                z-index: -1;
+            }
+
+            &::before {
+                left: -45px;
+                top: -20px;
+                background-image: url('../img/btnleft.png');
+                height: 155px;
+                z-index: -1;
+            }
+        }
+        
+        // @media (min-width: $large-desktop-size) {
+        // }
+    }
+}

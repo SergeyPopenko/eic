@@ -1,0 +1,23 @@
+.container {
+	--container-width: 600px;
+	--container-padding: 15px;
+
+	padding: 0 var(--container-padding);
+	max-width: var(--container-width);
+	margin: 0 auto;
+
+
+	@media (min-width: $tablet-size) {
+		--container-width: 1024px;
+	}
+
+	@media (min-width: $desktop-size) {
+		--container-width: 1300px;
+		--container-padding: 20px;
+	}
+
+	@media (min-width: $large-desktop-size) {
+		--container-width: 1600px;
+		--container-padding: 30px;
+	}
+}

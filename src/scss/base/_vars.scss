@@ -1,0 +1,26 @@
+:root {
+	// root color
+	--page-bg: #fff;
+	--text-color-primary: #000;
+	--text-color-secondary: #fff;
+	--accent: #ac182c;
+	
+	// brand root-color
+	--brand-dark-blue: #06266F;
+	--brand-simple-blue: #1140AA;
+	--brand-light-blue: #4672D5;
+	--brand-lightest-blue: #6C8CD5;
+	--brand-dark-brown: #3B241A;
+	--brand-simple-brown: #835E4B;
+	--brand-light-brown: #A47E6B;
+	--brand-lightest-brown: #DFD1CB;
+
+	//decoration
+	--border-color-light-grey: #D4D0D0;
+}
+
+
+$large-desktop-size: 1600px;
+$desktop-size: 1300px;
+$tablet-size: 1024px;
+$mobile-size: 768px;

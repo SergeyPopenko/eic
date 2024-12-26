@@ -1,0 +1,18 @@
+.cookie-page {
+    padding: 50px 0;
+
+    &__title {
+        @include fontTitle ($font-color: var(--brand-dark-blue));
+        margin-bottom: 40px;
+    }
+
+    &__article {
+        margin-bottom: 30px;
+        color: var(--brand-dark-blue);
+
+        a {
+            color: inherit;
+            text-decoration: underline;
+        }
+    }
+}

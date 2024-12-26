@@ -1,0 +1,25 @@
+<header class="header">
+    <div class="container">
+        <div class="header__row">
+            <svg width="35" height="40">
+                <use xlink:href="#flag" />
+            </svg>
+            <a class="header__logo-link" href="index.html">
+				<figure class="header__logo">
+					<picture>
+						<source type="image/webp" srcset="img/logo.webp">
+
+						<img src="img/logo.png" alt="Логотип компанії 'European Integration Centre'"
+						width="128" height="70">
+					</picture>
+				</figure>
+			</a>
+            <a class="header__link-text" href="index.html">European Integration Centre</a>
+            @@include('nav.html')
+            <button class="mobile-nav-btn js-mobile-nav-btn">
+                <div class="nav-icon js-nav-icon"></div>
+            </button>
+        </div>
+    </div>
+</header>
+@@include('mobile-nav.html')
